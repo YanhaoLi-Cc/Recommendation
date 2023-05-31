@@ -1,0 +1,79 @@
+2023-05-30 21:04:18.190: my pid: 29664
+2023-05-30 21:04:18.190: model: model.general_recommender.SGL
+2023-05-30 21:04:18.190: Dataset statistics:
+Name: yelp2018
+The number of users: 31668
+The number of items: 38048
+The number of ratings: 1561406
+Average actions of users: 49.31
+Average actions of items: 41.04
+The sparsity of the dataset: 99.870412%
+
+The number of training: 1237259
+The number of validation: 0
+The number of testing: 324147
+2023-05-30 21:04:18.200: NeuRec:[NeuRec]:
+recommender=SGL
+dataset=yelp2018
+file_column=UI
+sep=','
+gpu_id=0
+gpu_mem=0.99
+metric=["Precision", "Recall", "NDCG"]
+top_k=[20]
+test_thread=8
+test_batch_size=128
+seed=2021
+start_testing_epoch=0
+
+SGL:[hyperparameters]:
+aug_type=ED
+reg=1e-4
+embed_size=64
+n_layers=2
+ssl_reg=0.1
+ssl_ratio=0.1
+ssl_temp=0.2
+ssl_mode=both_side
+lr=0.001
+learner=adam
+adj_type=pre
+epochs=1000
+batch_size=2048
+num_negatives=1
+param_init=xavier_uniform
+stddev=0.01
+verbose=1
+stop_cnt=10
+pretrain_flag=0
+save_flag=0
+2023-05-30 21:04:23.363: metrics:	Precision@20	Recall@20   	NDCG@20     
+2023-05-30 21:07:13.565: [iter 1 : loss : 1.8207 = 0.6930 + 1.1277 + 0.0000, time: 170.200663]
+2023-05-30 21:07:18.007: epoch 1:	0.00156782  	0.00299123  	0.00249617  
+2023-05-30 21:07:18.007: Find a better model.
+2023-05-30 21:10:09.440: [iter 2 : loss : 1.8191 = 0.6928 + 1.1262 + 0.0000, time: 171.407613]
+2023-05-30 21:10:13.681: epoch 2:	0.00336622  	0.00667926  	0.00560007  
+2023-05-30 21:10:13.681: Find a better model.
+2023-05-30 21:13:06.028: [iter 3 : loss : 1.8185 = 0.6924 + 1.1261 + 0.0000, time: 172.323449]
+2023-05-30 21:13:10.576: epoch 3:	0.00523253  	0.01110708  	0.00908518  
+2023-05-30 21:13:10.577: Find a better model.
+2023-05-30 21:16:02.868: [iter 4 : loss : 1.8171 = 0.6909 + 1.1262 + 0.0000, time: 172.269840]
+2023-05-30 21:16:07.068: epoch 4:	0.00481725  	0.01048458  	0.00819894  
+2023-05-30 21:18:58.043: [iter 5 : loss : 1.8104 = 0.6829 + 1.1275 + 0.0000, time: 170.953094]
+2023-05-30 21:19:02.282: epoch 5:	0.00875501  	0.01981767  	0.01611839  
+2023-05-30 21:19:02.282: Find a better model.
+2023-05-30 21:21:53.703: [iter 6 : loss : 1.7659 = 0.6303 + 1.1355 + 0.0001, time: 171.398927]
+2023-05-30 21:21:57.904: epoch 6:	0.01765252  	0.03855838  	0.03207189  
+2023-05-30 21:21:57.904: Find a better model.
+2023-05-30 21:24:49.019: [iter 7 : loss : 1.6482 = 0.4944 + 1.1534 + 0.0004, time: 171.091547]
+2023-05-30 21:24:53.202: epoch 7:	0.02686366  	0.05895476  	0.04861105  
+2023-05-30 21:24:53.202: Find a better model.
+2023-05-30 21:27:45.028: [iter 8 : loss : 1.4863 = 0.3083 + 1.1771 + 0.0009, time: 171.803153]
+2023-05-30 21:27:49.458: epoch 8:	0.02799243  	0.06161702  	0.05085713  
+2023-05-30 21:27:49.458: Find a better model.
+2023-05-30 21:30:40.984: [iter 9 : loss : 1.3722 = 0.1875 + 1.1833 + 0.0014, time: 171.503935]
+2023-05-30 21:30:45.375: epoch 9:	0.02875177  	0.06367013  	0.05241613  
+2023-05-30 21:30:45.375: Find a better model.
+2023-05-30 21:33:37.175: [iter 10 : loss : 1.3120 = 0.1331 + 1.1771 + 0.0018, time: 171.777571]
+2023-05-30 21:33:41.507: epoch 10:	0.02915116  	0.06475411  	0.05342380  
+2023-05-30 21:33:41.507: Find a better model.
