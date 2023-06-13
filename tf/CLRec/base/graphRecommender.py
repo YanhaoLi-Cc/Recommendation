@@ -3,9 +3,10 @@ import numpy as np
 import scipy.sparse as sp
 import tensorflow as tf
 
+
 class GraphRecommender(DeepRecommender):
-    def __init__(self,conf,trainingSet,testSet,fold='[1]'):
-        super(GraphRecommender, self).__init__(conf,trainingSet,testSet,fold)
+    def __init__(self, conf, trainingSet, testSet, fold='[1]'):
+        super(GraphRecommender, self).__init__(conf, trainingSet, testSet, fold)
 
     def create_joint_sparse_adjaceny(self):
         '''
@@ -33,8 +34,8 @@ class GraphRecommender(DeepRecommender):
         return a sparse tensor with the shape (user number + item number, user number + item number)
         '''
         norm_adj = self.create_joint_sparse_adjaceny()
-        row,col = norm_adj.nonzero()
-        indices = np.array(list(zip(row,col)))
+        row, col = norm_adj.nonzero()
+        indices = np.array(list(zip(row, col)))
         adj_tensor = tf.SparseTensor(indices=indices, values=norm_adj.data, dense_shape=norm_adj.shape)
         return adj_tensor
 
@@ -46,8 +47,8 @@ class GraphRecommender(DeepRecommender):
         for pair in self.data.trainingData:
             row += [self.data.user[pair[0]]]
             col += [self.data.item[pair[1]]]
-            entries += [1.0/len(self.data.trainSet_u[pair[0]])]
-        ratingMat = sp.coo_matrix((entries, (row, col)), shape=(self.num_users,self.num_items),dtype=np.float32)
+            entries += [1.0 / len(self.data.trainSet_u[pair[0]])]
+        ratingMat = sp.coo_matrix((entries, (row, col)), shape=(self.num_users, self.num_items), dtype=np.float32)
         return ratingMat
 
     def create_sparse_adj_tensor(self):
@@ -55,7 +56,7 @@ class GraphRecommender(DeepRecommender):
         return a sparse tensor with the shape (user number, item number)
         '''
         ratingMat = self.create_sparse_rating_matrix()
-        row,col = ratingMat.nonzero()
-        indices = np.array(list(zip(row,col)))
+        row, col = ratingMat.nonzero()
+        indices = np.array(list(zip(row, col)))
         adj_tensor = tf.SparseTensor(indices=indices, values=ratingMat.data, dense_shape=ratingMat.shape)
         return adj_tensor

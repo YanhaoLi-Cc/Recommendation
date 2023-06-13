@@ -17,9 +17,12 @@ class SimGCL(GraphRecommender):
     def readConfiguration(self):
         super(SimGCL, self).readConfiguration()
         args = config.OptionConf(self.config['SimGCL'])
-        self.cl_rate = float(args['-lambda'])
+        self.cl_rate1 = float(args['-lambda1'])
+        self.cl_rate2 = float(args['-lambda2'])
+        self.cl_rate3 = float(args['-lambda3'])
         self.eps = float(args['-eps'])
         self.n_layers = int(args['-n_layer'])
+
 
     def LightGCN_encoder(self, emb, adj, n_layers):
         all_embs = []
@@ -77,6 +80,7 @@ class SimGCL(GraphRecommender):
         pos_score_i = tf.reduce_sum(tf.multiply(normalize_emb_item1, normalize_emb_item2), axis=1)
         ttl_score_u = tf.matmul(normalize_emb_user1, normalize_emb_user2, transpose_a=False, transpose_b=True)
         ttl_score_i = tf.matmul(normalize_emb_item1, normalize_emb_item2, transpose_a=False, transpose_b=True)
+
         pos_score_u = tf.exp(pos_score_u / 0.2)
         ttl_score_u = tf.reduce_sum(tf.exp(ttl_score_u / 0.2), axis=1)
         pos_score_i = tf.exp(pos_score_i / 0.2)

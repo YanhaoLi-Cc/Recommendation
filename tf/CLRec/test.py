@@ -1,14 +1,12 @@
-from sklearn import datasets
 from openTSNE import TSNE
 import pandas as pd
 import numpy as np
 from openTSNE import utils
 import matplotlib.pyplot as plt
-# iris = datasets.load_iris()
-# x, y = iris["data"], iris["target"]
-x = np.genfromtxt('SGL_user.csv', delimiter=',')
-# x = x[:10000, :]
+x = np.genfromtxt('Light.csv', delimiter=',')
 
+# x = x[:1000, :]
+# print(len(x))
 embedding = TSNE().fit(x)
 embedding_train_X = embedding[:, 0]
 embedding_train_Y = embedding[:, 1]
@@ -21,7 +19,7 @@ y = r * np.cos(angel)
 plt.figure(figsize=(10, 10))
 plt.scatter(x, y, s=1, color='lightgreen',  alpha=0.05, marker='o',)
 
-# plt.scatter(embedding_train_X, embedding_train_Y, s=2, alpha=0.3, marker='o',)
+# plt.scatter(embedding_train_X, embedding_train_Y, s=1, color='lightgreen',  alpha=1, marker='o',)
+
+
 plt.show()
-# print(embedding)
-# utils.plot(embedding, colors=utils.MACOSKO_COLORS)
